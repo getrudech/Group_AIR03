@@ -1,0 +1,5 @@
+<launch>
+    <!-- static transform from base_link to laser -->
+    <node pkg="tf" type="static_transform_publisher" name="base_to_laser"
+        args="0 0 0.1 0 0 0 base_link base_scan 100"/>
+</launch>

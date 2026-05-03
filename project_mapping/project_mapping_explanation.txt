@@ -1,0 +1,16 @@
+Project Mapping Explanation
+
+1. Move Script: The script publishes Twist messages to /cmd_vel topic with linear velocity 0.6. It subscribes to /scan topic to detect obstacles. When an obstacle is detected within 1 meter, the robot stops and rotates approximately 90 degrees before continuing forward.
+
+2. Gmapping Parameters Modified:
+   - maxUrange (default 80, set to 8.0): Maximum usable range of laser. Set to match RPLIDAR actual range for better accuracy.
+   - minimumScore (default 0, set to 200): Minimum score for considering scan matching result good. Higher value reduces wrong matches.
+   - particles (default 30, set to 80): Number of particles in the filter. More particles give better accuracy but use more CPU.
+   - linearUpdate (default 1.0, set to 0.5): Robot needs to move 0.5m before processing new scan. More frequent updates give better map.
+   - angularUpdate (default 0.5, set to 0.3): Robot needs to rotate 0.3rad before processing new scan. More frequent angular updates improve map quality.
+
+3. Map Files:
+   - project_mapping_map.pgm: Grayscale image of the map. White = free space, Black = obstacles, Gray = unknown.
+   - project_mapping_map.yaml: Contains map metadata including resolution, origin coordinates, occupied and free thresholds, and path to pgm file.
+
+4. Map Server: The map_provider.launch file starts the map_server node which loads the saved map yaml file and publishes it on the /map topic for other nodes to use.

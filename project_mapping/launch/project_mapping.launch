@@ -1,0 +1,15 @@
+<launch>
+    <!-- set turtlebot3 model -->
+    <arg name="model" default="burger"/>
+
+    <!-- load robot model -->
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_burger.urdf.xacro"/>
+
+    <!-- robot state publisher for TF -->
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
+
+    <!-- slam_gmapping node -->
+    <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+        <rosparam command="load" file="$(find project_mapping)/param/project_mapping_params.yaml"/>
+    </node>
+</launch>
