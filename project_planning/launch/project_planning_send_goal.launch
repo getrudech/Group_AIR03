@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- Launch the full move_base stack -->
+  <include file="$(find project_planning)/launch/project_move_base.launch"/>
+
+  <!-- Launch RViz with planning configuration -->
+  <node pkg="rviz" type="rviz" name="rviz" 
+        args="-d $(find project_planning)/rviz/project_planning_rviz.rviz"
+        output="screen"/>
+
+</launch>

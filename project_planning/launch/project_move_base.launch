@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- Launch AMCL and map_server from partners' localization package -->
+  <include file="$(find project_localization)/launch/project_localization.launch"/>
+
+  <!-- Launch move_base node -->
+  <node pkg="move_base" type="move_base" respawn="false" 
+        name="move_base" output="screen">
+
+    <rosparam file="$(find project_planning)/params/project_move_base_params.yaml" 
+              command="load"/>
+    <rosparam file="$(find project_planning)/params/costmap_common_params.yaml" 
+              command="load" ns="global_costmap"/>
+    <rosparam file="$(find project_planning)/params/costmap_common_params.yaml" 
+              command="load" ns="local_costmap"/>
+    <rosparam file="$(find project_planning)/params/global_costmap_params.yaml" 
+              command="load"/>
+    <rosparam file="$(find project_planning)/params/local_costmap_params.yaml" 
+              command="load"/>
+    <rosparam file="$(find project_planning)/params/global_planner_params.yaml" 
+              command="load"/>
+    <rosparam file="$(find project_planning)/params/dwa_local_planner_params.yaml" 
+              command="load"/>
+
+    <param name="base_global_planner" value="navfn/NavfnROS"/>
+    <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS"/>
+    <param name="controller_frequency" value="5.0"/>
+    <param name="controller_patience" value="15.0"/>
+
+  </node>
+
+</launch>
