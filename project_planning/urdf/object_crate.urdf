@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<robot name="object_crate">
+  <link name="object_crate_link">
+    <inertial>
+      <mass value="3.0"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+               iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.4 0.4 0.4"/>
+      </geometry>
+      <material name="yellow">
+        <color rgba="1 1 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.4 0.4 0.4"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="object_crate_link">
+    <material>Gazebo/Yellow</material>
+    <static>true</static>
+  </gazebo>
+</robot>

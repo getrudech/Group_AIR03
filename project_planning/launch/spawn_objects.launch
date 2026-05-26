@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Object 1: Tall Cylinder Pillar (Red) -->
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_pillar"
+        args="-file $(find project_planning)/urdf/object_pillar.urdf
+              -urdf -x 1.0 -y 1.0 -z 0.75 -model object_pillar"
+        output="screen"/>
+
+  <!-- Object 2: Blue Box Platform -->
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_platform"
+        args="-file $(find project_planning)/urdf/object_platform.urdf
+              -urdf -x -1.0 -y 1.0 -z 0.25 -model object_platform"
+        output="screen"/>
+
+  <!-- Object 3: Green Sphere -->
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_sphere"
+        args="-file $(find project_planning)/urdf/object_sphere.urdf
+              -urdf -x 1.0 -y -1.0 -z 0.3 -model object_sphere"
+        output="screen"/>
+
+  <!-- Object 4: Yellow Cube Crate -->
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_crate"
+        args="-file $(find project_planning)/urdf/object_crate.urdf
+              -urdf -x -1.0 -y -1.0 -z 0.2 -model object_crate"
+        output="screen"/>
+
+  <!-- Object 5: Orange Barrier Wall -->
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_barrier"
+        args="-file $(find project_planning)/urdf/object_barrier.urdf
+              -urdf -x 0.0 -y 2.0 -z 0.5 -model object_barrier"
+        output="screen"/>
+</launch>
