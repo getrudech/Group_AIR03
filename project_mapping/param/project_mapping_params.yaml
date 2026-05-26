@@ -1,0 +1,11 @@
+base_frame: base_footprint
+map_frame: map
+odom_frame: odom
+maxUrange: 3.5
+maxRange: 3.5
+minimumScore: 50
+particles: 80
+delta: 0.05
+linearUpdate: 0.2
+angularUpdate: 0.2
+temporalUpdate: 2.0

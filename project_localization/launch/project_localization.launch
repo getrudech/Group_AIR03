@@ -1,0 +1,12 @@
+<!-- amcl launch file -->
+<launch>
+<!-- Load the map created in mapping part -->
+  <include file="$(find project_mapping)/launch/map_provider.launch"/>
+
+  <!-- Our params -->
+  <node pkg="amcl" type="amcl" name="amcl" output="screen">
+    <rosparam command="load"
+      file="$(find project_localization)/param/project_localization_params.yaml"/>
+  </node>
+
+</launch>
